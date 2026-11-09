@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Tasks</title>
+    <script src="study-queue.js" defer></script>
+</head>
+
+<body>
+    <main id="app">
+        <h1>My Tasks</h1>
+
+        <form id="task-form">
+            <label for="task-input">Add a task</label>
+            <input type="text" id="task-input" placeholder="Enter a task..." required>
+            <button type="submit">Add Task</button>
+        </form>
+
+        <p id="empty-state">No tasks yet. Add your first task!</p>
+        <ul id="tasks"></ul>
+    </main>
+</body>
+
+</html>
