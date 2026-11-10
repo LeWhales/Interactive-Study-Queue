@@ -1,0 +1,19 @@
+.body .main {
+    box-sizing: content-box;
+    width: 100%;
+    background-color: crimson;
+}
+
+
+h1 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+p {
+    background: rgb(205, 214, 255);
+}
+
+ul {
+    font-style: italic;
+    font-size: larger;
+}
