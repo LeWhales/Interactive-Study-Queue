@@ -10,35 +10,55 @@ form.addEventListener("submit", (event) => {
     event.preventDefault();
 
     const taskText = input.value.trim();
+
     if (!taskText) {
         input.focus();
         return;
     }
+
     const item = document.createElement("li");
+    const text = document.createElement("span");
+    text.className = "task-text";
+    text.textContent = taskText;
 
-    item = "you have created a task"
-},
-    list.addEventListener("click", (event) => {
-        const button = event.target.closest("button[data-action]");
-        if (!button || !list.contains(button)) return;
-        const item = button.closest("li");
-        if (button.dataset.action === "remove") item.remove();
+    const completeButton = document.createElement("button");
+    completeButton.textContent = "Complete";
+    completeButton.dataset.action = "complete";
 
-        item.querySelector(".task-text").textContent = taskText;
+    const removeButton = document.createElement("button");
+    removeButton.textContent = "Remove";
+    removeButton.dataset.action = "remove";
 
-        list.appendChild(item);
+    item.appendChild(text);
+    item.appendChild(completeButton);
+    item.appendChild(removeButton);
+    list.appendChild(item);
+    input.value = "";
+    input.focus();
 
-        input.value = "";
-        input.focus();
+    render();
+});
 
-        render();
-    },
-        list.addEventListener("click", (event) => {
-            const button = event.target.closest('button[data-action="remove"]');
-            if (!button || !list.contains(button)) return;
+// complete/remove task
+list.addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-action]");
+    if (!button || !list.contains(button)) return;
+    const item = button.closest("li");
 
-            button.closest("li").remove();
-            render();
-        }
-        )));
+    if (button.dataset.action === "remove") {
+        item.remove();
+    }
+
+    if (button.dataset.action === "complete") {
+        item.classList.toggle("completed");
+
+        button.textContent =
+            item.classList.contains("completed")
+                ? "Undo"
+                : "Complete";
+    }
+
+    render();
+});
+
 
